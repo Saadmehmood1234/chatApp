@@ -1,3 +1,39 @@
+// import { Server } from "socket.io";
+// import http from "http";
+// import express from "express";
+
+// const app = express();
+
+// const server = http.createServer(app);
+// const io = new Server(server, {
+//   cors: {
+//     origin: ["http://localhost:3000"],
+//     methods: ["GET", "POST"],
+//   },
+// });
+
+// export const getReceiverSocketId=(receiverId)=>{
+//   return userSocketMap[receiverId];
+// }
+
+// const userSocketMap = {};
+
+// io.on("connection", (socket) => {
+//   console.log("a user connected", socket.id);
+//   const userId = socket.handshake.query.userId;
+//   if (userId != "undefined") userSocketMap[userId] = socket.id;
+//   io.emit("getOnlineUsers", Object.keys(userSocketMap));
+//   socket.on("disconnect", () => {
+//     console.log("user disconnected", socket.id);
+//     delete userSocketMap[userId];
+//     io.emit("getOnlineUsers", Object.keys(userSocketMap));
+//   });
+// });
+
+// export { app, io, server };
+
+
+// socket.js
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
@@ -12,21 +48,34 @@ const io = new Server(server, {
   },
 });
 
-export const getReceiverSocketId=(receiverId)=>{
-  return userSocketMap[receiverId];
-}
-
 const userSocketMap = {};
 
+// Function to get the receiver's socket ID
+export const getReceiverSocketId = (receiverId) => {
+  return userSocketMap[receiverId];
+};
+
 io.on("connection", (socket) => {
-  console.log("a user connected", socket.id);
   const userId = socket.handshake.query.userId;
-  if (userId != "undefined") userSocketMap[userId] = socket.id;
-  io.emit("getOnlineUsers", Object.keys(userSocketMap));
-  socket.on("disconnect", () => {
-    console.log("user disconnected", socket.id);
-    delete userSocketMap[userId];
+
+  // Validate if userId exists
+  if (userId) {
+    console.log(`User connected: ${userId}, Socket ID: ${socket.id}`);
+    userSocketMap[userId] = socket.id;
+
+    // Emit list of online users to all connected clients
     io.emit("getOnlineUsers", Object.keys(userSocketMap));
+  }
+
+  // Handle socket disconnection
+  socket.on("disconnect", () => {
+    if (userId) {
+      console.log(`User disconnected: ${userId}, Socket ID: ${socket.id}`);
+      delete userSocketMap[userId];
+
+      // Emit updated list of online users
+      io.emit("getOnlineUsers", Object.keys(userSocketMap));
+    }
   });
 });
 

@@ -4,7 +4,7 @@ import MessageSkeleton from "../skeleton/MessageSkeleton";
 import Message from "./Message";
 import useListenMessage from "../../hooks/useListenMessage";
 
-const Messages = () => {
+const Messages = ({isSidebarOpen}) => {
 	const {messages,loading}=useGetMessages();
 	useListenMessage();
 	const lastMessageRef=useRef();
@@ -18,7 +18,7 @@ const Messages = () => {
 		<div className='px-4 flex-1 overflow-auto'>
 			{!loading && messages.length>0 && messages.map((message)=>(
 			<div key={message._id} ref={lastMessageRef}>
-					<Message  message={message}/>
+					<Message  message={message} isSidebarOpen={isSidebarOpen}/>
 			</div>
 			))}
 			{loading&& [...Array(3)].map((_,idx)=>

@@ -33,7 +33,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
 import React from "react";
 
-const Message = ({ message }) => {
+const Message = ({ message ,isSidebarOpen}) => {
   const { authUser } = useAuthContext();
   const { selectedConversation } = useConversation();
   const fromMe = message.senderId === authUser._id;
@@ -44,7 +44,7 @@ const Message = ({ message }) => {
     : selectedConversation?.profilePic;
   const shakeClass = message.shouldShake ? "shake" : "";
   return (
-    <div className={`chat ${chatClassName}`}>
+    <div className={`chat  ${chatClassName} ${isSidebarOpen ? "hidden":"block"}`}>
       <div className="chat-image avatar">
         <div className="w-12 rounded-full">
           <img src={profilePic} alt="avatar" />

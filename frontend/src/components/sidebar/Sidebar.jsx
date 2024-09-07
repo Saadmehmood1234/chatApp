@@ -24,10 +24,10 @@ import LogoutButton from './LogoutButton';
 
 const Sidebar = () => {
   return (
-    <div className='border-r border-slate-500 flex flex-col  p-4 rounded-lg'>
+    <div className='border-r border-slate-500 flex flex-col overflow-y-scroll p-4 rounded-lg mt-5'>
       <SearchInput />
       <div className='divider px-3'></div>
-      <Conversations />
+      <Conversations/>
       <LogoutButton />
     </div>
   );

@@ -31,7 +31,7 @@ import { getRandomEmoji } from '../../utils/emojis';
 const Conversations = () => {
   const { loading, conversations } = useGetConversation();
   return (
-    <div className='py-2 flex flex-col overflow-y-auto h-[400px]'>
+    <div className='py-2 flex flex-col overflow-y-auto md:h-[600px] lg:h-[700px] max-sm:h-[400px]'>
       {conversations.map((conversation, idx) => (
         <Conversation
           key={conversation._id}

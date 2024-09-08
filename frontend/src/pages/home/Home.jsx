@@ -117,7 +117,7 @@ const Home = () => {
       >
         <Sidebar />
       </div>
-      <MessageContainer isSidebarOpen={isSidebarOpen}/>
+      <MessageContainer />
     </div>
   );
 };

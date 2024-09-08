@@ -6,7 +6,7 @@ import Messages from "./Messages";
 import { TiMessages } from "react-icons/ti";
 import { useAuthContext } from "../../context/AuthContext";
 
-const MessageContainer = ({isSidebarOpen}) => {
+const MessageContainer = () => {
   const {selectedConversation,setSelectedConversation}=useConversation();
   useEffect(()=>{
     return ()=>setSelectedConversation(null);
@@ -14,15 +14,15 @@ const MessageContainer = ({isSidebarOpen}) => {
   return (
     <div className="w-full flex flex-col bg-gradient-to-r from-gray-800 via-gray-900 to-black p-4 rounded-lg shadow-lg">
       {!selectedConversation ? (
-        <NoChatSelected isSidebarOpen={isSidebarOpen}/>
+        <NoChatSelected />
       ) : (
-        <div className={`${ !isSidebarOpen ?"bg-gradient-to-r from-slate-500 to-gray-700 px-4 py-2 mx-12 mb-2 rounded-lg":"hidden"} `}>
+        <div className="bg-gradient-to-r from-slate-500 to-gray-700 px-4 py-2 mx-12 mb-2 rounded-lg">
           
           <span className="label-text font-bold text-gray-300">To:</span>{" "}
           <span className="text-white font-bold">{selectedConversation.fullname}</span>
         </div>
       )}
-      <Messages isSidebarOpen={isSidebarOpen}/>
+      <Messages />
       <MessageInput />
     </div>
   );
@@ -30,10 +30,10 @@ const MessageContainer = ({isSidebarOpen}) => {
 
 export default MessageContainer;
 
-const NoChatSelected = ({isSidebarOpen}) => {
+const NoChatSelected = () => {
   const {authUser}=useAuthContext();
   return (
-    <div className={`${ !isSidebarOpen ?"flex items-center justify-center w-full h-full":"hidden"}`}>
+    <div className="flex items-center justify-center w-full h-full">
       <div
         className="px-4 text-center sm:text-lg md:text-xl
             text-gray-200 font-semibold flex flex-col items-center gap-2"

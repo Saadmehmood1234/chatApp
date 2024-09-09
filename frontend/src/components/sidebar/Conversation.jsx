@@ -9,8 +9,8 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 
   return (
     <>
-      <div className={`flex justify-center items-center transition duration-300 rounded p-4 py-1 cursor-pointer hover:bg-gradient-to-r hover:from-pink-500 hover:via-blue-400 hover:to-orange-500 hover:opacity-70
-      ${isSelected?"transition duration-300 rounded p-4 py-1  bg-gradient-to-r from-pink-500 via-blue-400 to-orange-500 ":""}`}
+      <div className={`flex justify-center items-center transition duration-300 rounded p-4 py-1 cursor-pointer hover:orange-500 hover:opacity-70
+      ${isSelected?"transition duration-300 rounded p-4 py-1  bg-orange-500 ":""}`}
       onClick={()=>setSelectedConversation(conversation)}>
         <div className="flex gap-2 items-center ">
           <div className={`avatar ${isOnline ? "online":""}`}>
@@ -22,7 +22,7 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
         <div className="flex flex-col ml-4 flex-1">
           <div className="flex  justify-between">
             <p className="font-bold text-gray-200">{conversation.fullname}</p>
-            <span className="text-xl mb-2">{emoji}</span>
+            {/* <span className="text-xl mb-2">{emoji}</span> */}
           </div>
         </div>
       </div>

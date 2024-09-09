@@ -17,10 +17,10 @@ const Login = () => {
       className="flex items-center justify-center min-h-screen bg-cover bg-center"
       style={{ backgroundImage: `url(/mnt/data/bg.jpeg)` }}
     >
-      <div className="w-full max-w-md p-8 rounded-lg shadow-lg bg-gray-700 bg-opacity-20 backdrop-filter backdrop-blur-md">
+      <div className="w-full max-w-md p-8 rounded-lg shadow-md bg-gray-600 shadow-gray-200/50">
         <h1 className="text-4xl font-bold text-center text-white mb-6">
           Welcome to{" "}
-          <span className="bg-gradient-to-r from-pink-500  via-blue-400 to-orange-500 bg-clip-text text-transparent">
+          <span className="text-orange-500 ">
             ChatterBox
           </span>
         </h1>
@@ -59,7 +59,7 @@ const Login = () => {
           </Link>
           <button
             disabled={loading}
-            className="w-full py-3 rounded-md text-lg font-semibold text-white bg-gradient-to-r from-pink-500 via-blue-400 to-orange-500 hover:opacity-70 transition duration-300"
+            className="w-full py-3 rounded-md text-lg font-semibold text-white  bg-orange-500 hover:opacity-70 transition duration-300"
           >
             {loading ? <span className="loading loading-spinner"></span> : "Login"}
           </button>

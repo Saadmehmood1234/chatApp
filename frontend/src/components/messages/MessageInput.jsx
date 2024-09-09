@@ -24,7 +24,7 @@ const MessageInput = () => {
         />
         <button
           type="submit"
-          className="absolute inset-y-0 end-0 flex items-center pe-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white rounded-lg p-1.5"
+          className="absolute inset-y-0 end-0 flex items-center pe-3 bg-orange-500 text-white rounded-lg p-1.5"
         >
          {loading?<div className="loading loading-spinner"></div>: <BsSend />}
         </button>

@@ -98,7 +98,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative flex sm:h-[850px] h-[650px] w-[90%] max-sm:w-full rounded-lg overflow-hidden bg-gray-600 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50">
+    <div className="relative flex  h-[100%] w-[100%] max-sm:w-full rounded-lg overflow-hidden bg-gray-600 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50">
       <div className="lg:hidden absolute top-4 left-4 z-100">
         <button
           onClick={toggleSidebar}
